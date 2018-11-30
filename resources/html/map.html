@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="map.css">
+    <title>Traffic Map</title>
+</head>
+
+<body>
+    
+    <div id="root">
+
+        <div id="navigation">
+
+            <div id="header">
+                <h2 class="pageTitle" v-html="header.title"></h2>
+                <span class="pageLogo" v-html="header.img"> </span>
+            </div>
+            
+            <div id="home" class="division">
+                <button class="navButton">Template</button>
+            </div>
+
+        </div>
+
+        <div id="map">
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../scripts/magic.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCLCh0dX81ASRsu9OcFkWI__iMxcgaESg&callback=initMap"></script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/camera.css">
+    <title>Cameras</title>
+</head>
+<body>
+    <div id="root">
+
+        <div id="header">
+
+            <div id="titleStuff">
+                <h2>{{header.title}}</h2>
+                <div id="imageLogo" v-html="header.image"></div>
+            </div>
+            <div id="searchStuff">
+                <div id="searchContainer">
+                    <input type="search" id="searchBar" :placeholder="cameraPage.placeholder"></input>
+                    <button v-on:click="toggleOptions()" v-bind:class="{'optionButtonToggled' : cameraPage.options.open, 'optionButton': cameraPage.options.closed}">Options</button>
+                </div>
+            </div>
+            <div v-bind:class="{'optionTab' : cameraPage.options.open, 'optionTabToggled': cameraPage.options.closed}">
+                <h3 class="optionSlogan">{{cameraPage.options.freewaySlogan}}</h3>
+                <div class="optionList" > 
+                    <button class="optionButton" v-for="options in cameraPage.options.freeway">{{options.name}}</button>
+                </div>
+
+                <h3 class="optionSlogan">{{cameraPage.options.locationSlogan}}</h3>
+                <div class="optionList"> 
+                        <button class="optionButton" v-for="options in cameraPage.options.location">{{options.name}}</button>
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="resultContainer">
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../scripts/magic.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCLCh0dX81ASRsu9OcFkWI__iMxcgaESg&callback=initMap"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>OOGA BOOGA CHA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/styles.css" />
+</head>
+
+<body>
+    
+    <div id="root">
+
+        <always :title="header.title" :img="header.image" :items="header.contents" v-scroll="handleScroll" :location="header.currentLocation"> </always>
+
+        <span id="mainContainer">
+            
+            <div id="dailyReport" class="blox">
+                
+                <span class="column">
+                    
+                    <div id="ReportOptions">
+                        <p class="reportp" v-for="options in Report.options">{{options}}</p>
+                    </div>
+                            
+                    <span id="listContainer">
+                            
+                    </span>
+
+                </span>
+
+                <div id="reportPic"> </div>
+
+            </div>
+
+            <div id="mapMe" class="blox">
+
+                <p class="slogan">{{slogans.map.slogan}}</p>
+                <span id="mapRoot">
+                    <div id="map"> </div>
+                    <img src="../../images/motif.png" /> 
+                </span>
+                <a :href="slogans.map.link" class="redirect">{{slogans.map.button}}</a>
+
+            </div>
+
+            <div id="cameraView" class="blox"> 
+                <p class="slogan">{{slogans.camera.slogan}}</p>
+                
+                <div id="cameraCase"> 
+                    <div v-for="camera in cameraStuff.cameraCase" v-bind:style="{ 'background-image': 'url(' + camera.link + ')' }" class="caseImage">
+                        <p>{{camera.name}}</p>
+                    </div>
+                </div>
+                <a :href="slogans.camera.link" class="redirect">{{slogans.camera.button}}</a>
+            </div>
+
+            <div id="forumView" class="blox">
+                <p class="slogan">{{slogans.forum.slogan}}</p>
+                <a :href="slogans.forum.link" class="redirect">{{slogans.forum.button}}</a>
+            </div>
+
+        </span>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script data-main="scraper.js" src="require.js"></script> -->
+    <script src="../scripts/magic.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCLCh0dX81ASRsu9OcFkWI__iMxcgaESg&callback=initMap"></script>
+</body>
+
+</html>
