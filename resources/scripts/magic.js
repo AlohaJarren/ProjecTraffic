@@ -16,7 +16,7 @@ var imageExport = (imageName) => `<img src='../../images/${imageName}' />`;
 
 //for vue
 
-var headerHolder = Vue.component("always", { /* component header */
+const headerHolder = Vue.component("always", { /* component header */
     props : ["img","title","items","location"],
     template : `
     <div id="header">
@@ -32,12 +32,26 @@ var headerHolder = Vue.component("always", { /* component header */
             
             <div id="header-itemHolder">
 
-                <a v-for="item in items" href="item.link" class="items"> {{item.name}} </a>
+                <a v-for="item in items" :href="item.link" class="items"> {{item.name}} </a>
 
             </div>
     </div>
     `
 });
+
+const post = Vue.component("post", {
+    props: ["description","date","user","comments"],
+    template: `
+        <div class="post">
+
+            <p class="postContents description">{{description.substring(0,50)}}</p>
+            <span class="contentDetails">
+                <p class="postContents user">{{user}}</p>
+                <p class="postContents date">{{date}}</p>
+            </span>
+        </div>
+    `
+})
 
 Vue.directive('scroll', { //vue directive for scrolling
     inserted: function (el, binding) {
@@ -55,19 +69,20 @@ var dataPath = new Vue({
     data: {
         slogans: {
             map: { slogan: "View the entire map of Hawaii with a Map", link: 'map.html', button: 'Go to Maps'},
-            camera: { slogan: "Get a live scoop of the road", link: '', button: 'Go to Cameras'},
-            about : { slogan: "A little shouout for credits", link: '', button: 'Go to about'},
-            forum : {slogan: "A problem on the street or a question, report it on the forums",link: '', button: 'Go to Forums'}
+            camera: { slogan: "Get a live scoop of the road", link: 'camers.html', button: 'Go to Cameras'},
+            about : { slogan: "A little shouout for credits", link: 'about.html', button: 'Go to about'},
+            forum : {slogan: "A problem on the street or a question, report it on the forums",link: 'forums.html', button: 'Go to Forums'}
         },
         header: {
             title: 'ProjecTraffic',
             currentLocation: 'Daily Report',
             image: imageExport('Logo.png'),
             contents: [
-                {link: 'google.com', name:'Near You'},
-                {link: 'google.com', name:'Map'},
-                {link: 'google.com', name:'Traffic Cam'},
-                {link: 'google.com', name:'About Me'},
+                {link: 'http://google.com', name:'Near You'},
+                {link: 'map.html', name:'Map'},
+                {link: 'cameras.html', name:'Traffic Cam'},
+                {link: 'about.html', name:'About Me'},
+                {link: 'cameras.html', name:'Cameras'}
             ]
         },
         Report: {
@@ -114,6 +129,25 @@ var dataPath = new Vue({
                 freewaySlogan: 'Freeway',
                 locationSlogan: 'Location'
             }
+        },
+        aboutMe: {
+            image: 'https://i.kym-cdn.com/entries/icons/original/000/018/859/image.jpg',
+            name: 'Jarren Calizo',
+            bottomText: 'Computer Programmer',
+            whereabouts: 'Waipahu, HI',
+            media: [
+                {image: `<img src="../../images/mediaIcons/github.png" alt="oof" />`,link:"https://github.com/alohaJarren",alt:"link for github"},
+                {image:`<img src="../../images/mediaIcons/instagram.png" alt="oof" />`,alt:"link for my IG OOGA BOOGA CHA"}
+            ]
+        },
+        forums: {
+            template: [
+                'Description',
+                'Date',
+                'User',
+                'Comments'
+            ],
+            filter: null
         }
     },
     methods: {
@@ -126,6 +160,14 @@ var dataPath = new Vue({
         },
         toggle : function(what) {
             what = !what;
+        },
+        allPost: function(which) {
+            if(which === undefined)
+                console.log('it doesnt exist');
+            else {
+                console.log(which);
+                return which
+            }
         },
         handleScroll: function (evt, el) { /* handles the scrolling happening in function */
             // console.log(window.scrollY)

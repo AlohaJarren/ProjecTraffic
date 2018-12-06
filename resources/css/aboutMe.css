@@ -1,0 +1,56 @@
+#root, html, body {
+    background-image: url("../../images/bg.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+#image {
+    display: table;
+    margin: 5% auto;
+    border-radius: 500%;
+    width: 25rem;
+    height: 25rem;
+    background-position: center;
+    background-size: cover;
+}
+
+#textContainer {
+    display:table;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+#textContainer > p {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin: 0;
+}
+
+#name {
+    font-size: 3rem;
+}
+
+#details {
+    font-size: 1.2rem;
+}
+
+#whereabouts {
+    font-size: 1rem;
+}
+
+#mediaItems {
+    display: flex;
+    width: 50%;
+    height: auto;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+#mediaItems > a {
+    display: inline-block;
+}
+
+#mediaItems > a > img {
+    width: 200px;
+    height: 200px;
+}

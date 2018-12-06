@@ -1,3 +1,15 @@
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
 @font-face { /* For Inkling Font */
     font-family: woomy;
     src: url(../../font/Paintball_Beta.otf);
@@ -12,6 +24,9 @@ body, html, #root {
     width: 100%;
     height: 100%;
     margin: 0;
+    background: linear-gradient(45deg, rgba(34,193,195,1) 0%, rgba(207,82,66,1) 20%, rgba(217,62,153,1) 50%, rgba(150,89,210,1) 80%, rgba(253,187,45,1) 100%);
+    background-size: 400% 400%;
+	animation: Gradient 30s ease infinite;
 }
 
 #header, #options, #resultContainer {
@@ -63,6 +78,7 @@ body, html, #root {
     border-radius: 3em;
     border: 1px solid black;
     font-size: 0.9rem;
+    background: transparent;
 }
 
 .optionTab {

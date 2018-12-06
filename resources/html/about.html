@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/universal.css">
+    <link rel="stylesheet" href="../css/aboutMe.css">
+    <title>About</title>
+</head>
+<body>
+    <div id="root">
+        <!-- <always :title="header.title" :img="header.image" :items="header.contents" v-scroll="handleScroll" :location="header.currentLocation"> </always> -->
+        <div id="image" v-bind:style="{ 'background-image': 'url(' + aboutMe.image + ')' }">
+            
+        </div>
+
+        <span id="textContainer">
+            <p id="name">{{aboutMe.name}}</p>
+            <p id="details">{{aboutMe.bottomText}}</p>
+            <p id="whereabouts">{{aboutMe.whereabouts}}</p>
+        </span>
+
+        <div id="mediaItems">
+            <a v-for="items in aboutMe.media" href="items.link" v-html="items.image"> </a>
+        </div>
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../scripts/magic.js"></script>
+</body>
+</html>
